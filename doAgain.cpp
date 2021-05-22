@@ -163,7 +163,7 @@ class vector{
 
     void allocate(const_iterator i, const_iterator j){
         data = alloc.allocate(j-i); //iskyria vietos
-        limit = dataEnd = unintialized_copy(i,j,data); //nukopijoja elementus is intervalo
+        limit = dataEnd = std::uninitialized_copy(i,j,data); //nukopijoja elementus is intervalo
     }
 
     //sunaikinti array elementus ir atlaisvinti atminti
@@ -212,20 +212,9 @@ int main(){
     vector<int> a;
     a.push_back(1);
     a.push_back(2);
-    // a.pop_back();
-    // a.push_back(3);
-    // a.insert(a.begin()+1,9);
-    a.insert(a.begin(),9);
-    // a.insert(a.begin(),9);
-    // a.insert(a.begin(),9);
-    std::cout<<*(a.insert(a.begin()+2,2,7))<<"\n";
-    a.erase(a.begin(),a.end());
-    a.push_back(1);
-    a.push_back(2);
-    a.push_back(1);
-    a.push_back(2);
-    a.push_back(1);
-    a.push_back(2);
+    vector<int> b(a);
+    a[0]= 2;
+    a[1]= 7;
     std::cout<<a[0]<<a[1]<<a[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
-
+    std::cout<<b[0]<<b[1]<<b[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
 }
