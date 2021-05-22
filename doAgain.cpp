@@ -119,8 +119,26 @@ class vector{
             return position;
         }
     //--erase
-        iterator erase(const_iterator position){
-            
+        iterator erase(iterator position){
+            if( position <begin()|| position>end()) { return position;} //should add error?
+            else{
+                alloc.destroy(position);
+                dataEnd = std::uninitialized_copy(position+1, end(), position); //copy all elements from position + to position
+                return position;
+            }
+        }
+
+        iterator erase (iterator first, iterator last){
+            if (first<begin() || last>end()) { return first;} //error
+            else{
+                iterator it = last;
+                while(it != first) alloc.destroy(--it); //delete elements in range [first,last)
+
+                dataEnd = std::uninitialized_copy(last, end(), first); // copy elements from [last,end())
+
+                return first+1; //return 1st element, behind deleted elements
+
+            }
         }
 
 
@@ -201,6 +219,13 @@ int main(){
     // a.insert(a.begin(),9);
     // a.insert(a.begin(),9);
     std::cout<<*(a.insert(a.begin()+2,2,7))<<"\n";
+    a.erase(a.begin(),a.end());
+    a.push_back(1);
+    a.push_back(2);
+    a.push_back(1);
+    a.push_back(2);
+    a.push_back(1);
+    a.push_back(2);
     std::cout<<a[0]<<a[1]<<a[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
 
 }
