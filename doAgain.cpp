@@ -155,6 +155,34 @@ class vector{
             dataEnd = buff_dataEnd;
             limit = buff_limit;
         }
+    //--clear
+        void clear() noexcept{ // whats the diff between it and destructor?
+            deallocate();
+        }
+    //--emplace
+        template <class... Args>
+        iterator emplace (iterator position, Args&&... args){ //Variadic function templates in C++
+            if(position < begin() || position > end() ){ return position; }//error
+            else{
+                int index = std::distance(begin(),position);
+                //patikrinam ar uztenka vietos
+                if (dataEnd == limit) grow();
+                position = data + index;
+                
+                for(iterator i = dataEnd()-1; i>=position; i--) alloc.construct(i+1,*i); //pajudinti visus elem i desine 
+                
+                dataEnd++; //update dataEnd
+
+                alloc.construct(position,std::forward<Args>(args)...);
+
+                return position;
+            }
+        }
+        template <class... Args>
+        void emplace_back (Args&&... args){
+            alloc.construct(dataEnd++, std::forward<Args>(args)...);
+        }
+
 
     private:
         iterator data;  // rodykle i pirma array elementa
