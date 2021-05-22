@@ -1,6 +1,7 @@
 #include <memory>
 #include <iostream>
 
+
 // template<class T>
 // class allocator {
 //     public:
@@ -140,7 +141,20 @@ class vector{
 
             }
         }
+    //--swap
+        void swap (vector& x){
+            iterator buff_data = x.data;
+            iterator buff_limit = x.limit;
+            iterator buff_dataEnd = x.dataEnd;
 
+            x.data = data;
+            x.dataEnd = dataEnd;
+            x.limit = limit;
+
+            data = buff_data;
+            dataEnd = buff_dataEnd;
+            limit = buff_limit;
+        }
 
     private:
         iterator data;  // rodykle i pirma array elementa
@@ -215,6 +229,7 @@ int main(){
     vector<int> b(a);
     a[0]= 2;
     a[1]= 7;
+    // a.swap(b);
     std::cout<<a[0]<<a[1]<<a[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
     std::cout<<b[0]<<b[1]<<b[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
 }
