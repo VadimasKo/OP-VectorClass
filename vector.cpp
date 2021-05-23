@@ -1,16 +1,4 @@
 #include <memory>
-#include <iostream>
-
-
-// template<class T>
-// class allocator {
-//     public:
-//         T* allocate(size_t);          //isskirti raw atminti
-//         void deallocate(T*, size_t);  // atlaisvinti atminti
-//         void construct(T*, const T&); //sukonstruoti 1 objekta
-//         void destroy(T*);             // sunaikinti 1 objekta
-//         //-+
-// };
 
 template <class T>
 class vector{
@@ -297,23 +285,3 @@ class vector{
     }
 
 };
-
-
-
-int main(){
-    vector<int> a;
-    a.push_back(1);
-    a.push_back(2);
-    vector<int> b(a);
-    // a[0]= 2;
-    // a[1]= 7;
-    // a.swap(b);
-    // a.resize(10,3);
-    // a.insert(a.end(), 7-a.size(),7);
-    a.reserve(100);
-    a.shrink_to_fit();
-    std::cout<<a.capacity()<<"\n";
-    std::cout<<a[0]<<a[1]<<a[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
-    // std::cout<<b[0]<<b[1]<<b[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
-    std::cout<<a.at(2);
-}
