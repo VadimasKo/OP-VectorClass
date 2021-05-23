@@ -61,19 +61,40 @@ class vector{
     // Capacity
         size_type size(){ return dataEnd - data; }
         size_type max_size(){ return alloc.max_size; }
-        // void resize(size_type n, const T& = T{}){
-        //     if( n<size()){}
-        //     else if(n>size()) {
-
-        //     }
-        // }
-
+        void resize(size_type n, const T& val = T{}){
+            if( n > size() ){
+                std::cout<<n-size()<<"\n";
+                insert(end(), n-size(),val);
+            }
+            else if (n< size()){
+                erase(begin()+n, end());
+            }
+        }
 
 
     //Element acess
         T& operator[](size_type i) { return data[i]; }
         const T& operator[](size_type i) const { return data[i]; }
-
+    //--at
+        T& at (size_type n){
+            return data[n];
+        }
+        const T& at (size_type n) const{
+            return data[n];
+        }
+    //--front 
+        T& front () { return *data; }
+        const T& front() const { return data; }
+    //--back
+        T& back() { return *(dataEnd-1);}
+        const T& back() const { return *(dataEnd-1);}
+    //--data
+        T* data1() noexcept{
+            return data;
+        }
+        const T* data1() const noexcept{
+            return data;
+        }
 
     // Modifiers
     //--assign
@@ -255,9 +276,12 @@ int main(){
     a.push_back(1);
     a.push_back(2);
     vector<int> b(a);
-    a[0]= 2;
-    a[1]= 7;
+    // a[0]= 2;
+    // a[1]= 7;
     // a.swap(b);
+    a.resize(10,3);
+    // a.insert(a.end(), 7-a.size(),7);
     std::cout<<a[0]<<a[1]<<a[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
-    std::cout<<b[0]<<b[1]<<b[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
+    // std::cout<<b[0]<<b[1]<<b[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
+    std::cout<<a.at(2);
 }
