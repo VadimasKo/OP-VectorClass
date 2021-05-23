@@ -70,6 +70,20 @@ class vector{
                 erase(begin()+n, end());
             }
         }
+        size_type capacity() const noexcept{
+            return limit-data;
+        }
+        bool empty() const noexcept{
+            return data-dataEnd==0;
+        }
+        void reserve (size_type n){
+            if(n > capacity()){
+                grow(n);
+            }
+        }
+        void shrink_to_fit(){
+            grow(size());
+        }
 
 
     //Element acess
@@ -260,8 +274,23 @@ class vector{
         data = new_data;
         dataEnd = new_last;
         limit = data + new_size;
-
     };
+
+    void grow(size_type new_size){
+
+        //allocate nauja vieta ir copy egz. elem.
+        iterator new_data = alloc.allocate(new_size);
+        iterator new_last = std::uninitialized_copy(data,dataEnd,new_data);
+
+        //atlaisvinti sena vieta
+        deallocate();
+
+        //resetint rodykles i nauja vieta
+        data = new_data;
+        dataEnd = new_last;
+        limit = data + new_size;
+    }
+
 
     void unchecked_append(const T& val){
         alloc.construct(dataEnd++,val);
@@ -279,8 +308,11 @@ int main(){
     // a[0]= 2;
     // a[1]= 7;
     // a.swap(b);
-    a.resize(10,3);
+    // a.resize(10,3);
     // a.insert(a.end(), 7-a.size(),7);
+    a.reserve(100);
+    a.shrink_to_fit();
+    std::cout<<a.capacity()<<"\n";
     std::cout<<a[0]<<a[1]<<a[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
     // std::cout<<b[0]<<b[1]<<b[2]<<a[3]<<a[4]<<a[5]<<""<<"\n";
     std::cout<<a.at(2);
