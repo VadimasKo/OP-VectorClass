@@ -4,11 +4,20 @@ reference - https://www.cplusplus.com/reference/vector/vector/
 
 ## Spartos tyrimai
    
-
+### Pushback vector int
+  
 | Konteineris/dydis | 10 000      | 100 000    | 1 000 000 |  10 000 000 | 100 000 000 |
 |-------------------|-------------|------------|-----------|-------------|-------------|
 | std::vector       | 0.000637811 | 0.00555732 | 0.0409649 | 0.224621    | 2.01388     |
 | vector            | 0.000629882 | 0.00595285 | 0.0195125 | 0.230119    | 2.06794     |
+
+
+### 2.0 pazymiu skaiciuokles sparta
+  
+| Konteineris/dydis | 10 000 | 100 000 | 1 000 000 |
+|-------------------|--------|---------|-----------|
+| std::vector       | 0.6    | 0.57    | 5.96      |
+| vector            | 0.5    | 0.50    | 5.42      |
 
 ## Funkciju pavyzdziai
 * void push_back(const T& val)
