@@ -2,6 +2,14 @@
 Recreating std::vector CPP
 reference - https://www.cplusplus.com/reference/vector/vector/
 
+## Spartos tyrimai
+   
+
+| Konteineris/dydis | 10 000      | 100 000    | 1 000 000 |  10 000 000 | 100 000 000 |
+|-------------------|-------------|------------|-----------|-------------|-------------|
+| std::vector       | 0.000637811 | 0.00555732 | 0.0409649 | 0.224621    | 2.01388     |
+| vector            | 0.000629882 | 0.00595285 | 0.0195125 | 0.230119    | 2.06794     |
+
 ## Funkciju pavyzdziai
 * void push_back(const T& val)
     * Funkcija prideda val reiksme i array konteinerio pabaiga
