@@ -14,7 +14,7 @@ reference - https://www.cplusplus.com/reference/vector/vector/
 ### perkelimu skaicius
 | Konteineris   | Vector | Std::vector |
 |---------------|--------|-------------|
-| perkelimu sk. | 21     | 0   (ó﹏ò｡)  |
+| perkelimu sk. | 0   (ó﹏ò｡)| 21  |
 
 ### 2.0 pazymiu skaiciuokles sparta
   
