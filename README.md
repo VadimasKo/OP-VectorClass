@@ -11,10 +11,10 @@ reference - https://www.cplusplus.com/reference/vector/vector/
 | std::vector       | 0.000637811 | 0.00555732 | 0.0409649 | 0.224621    | 2.01388     |
 | vector            | 0.000629882 | 0.00595285 | 0.0195125 | 0.230119    | 2.06794     |
 
-### perkelimu skaicius
+### perkelimu skaicius 1 000 000
 | Konteineris   | Vector | Std::vector |
 |---------------|--------|-------------|
-| perkelimu sk. | 0   (ó﹏ò｡)| 21  |
+| perkelimu sk. | 22     | 22          |
 
 ### 2.0 pazymiu skaiciuokles sparta
   
