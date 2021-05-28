@@ -116,6 +116,10 @@ class vector{
             if(dataEnd == limit) grow();
             unchecked_append(val);
         }
+        void push_back(const T&& val) {
+            if (dataEnd == limit) grow();
+            unchecked_append(std::move(val));
+        }
     //--pop_back
         void pop_back(){
             alloc.destroy(dataEnd--);
@@ -237,8 +241,7 @@ class vector{
          //sunaikinti atbuline tvarka sukonstruotus elementus
             iterator it = dataEnd;
             while(it != data){
-                alloc.destroy(it);
-                it--;
+                alloc.destroy(--it);    
             }
 
             alloc.deallocate(data,limit - data);
@@ -283,5 +286,7 @@ class vector{
     void unchecked_append(const T& val){
         alloc.construct(dataEnd++,val);
     }
+    void unchecked_append(const T&& val) { alloc.construct(dataEnd++, std::move(val)); }
 
 };
+
